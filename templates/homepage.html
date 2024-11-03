@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="../static/styleguide.css" />
+    <link rel="stylesheet" href="../static/stylehp.css" />
+  </head>
+  <body>
+    <div class="home-page">
+      <div class="div">
+        <div class="frame">
+          <p class="text-wrapper">
+            welcome to solace! embrace every phase. shine through life’s cycles. turn on mindfulness mode 
+            to get some tips on chilling out as you complete your assignments!
+          </p>
+          <button class="button" onclick="openSidebar()"><div class="text-wrapper-2">mindfulness mode</div></button>
+          <script>
+            function openSidebar() {
+              window.open(
+                "/sidebar",
+                "sidebarWindow",
+                "width=300,height=600,resizable=yes,scrollbars=no"
+                );
+
+            }
+          </script>
+        </div>
+        <img class="sun" src="../static/images/solacelogo.png" />
+        <div class="frame-2"></div>
+        <p class="p">
+          welcome to solace! embrace every phase. shine through life’s cycles. turn on mindfulness mode to keep a
+          watchful eye on you as you complete your assignments!
+        </p>
+        <button class="div-wrapper" onclick="location.href='/logout'"><div class="text-wrapper-3">quit</div></button>
+      </div>
+    </div>
+  </body>
+</html>
+
+

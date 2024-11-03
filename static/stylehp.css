@@ -1,0 +1,172 @@
+/* Reset all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Prevents scrolling */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Home Page */
+.home-page {
+  background: linear-gradient(180deg, rgb(255, 191, 0) 0%, rgb(255, 140, 0) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Main container */
+.home-page .div {
+  width: 1440px; /* Original width */
+  height: 900px; /* Original height */
+  position: relative;
+  transform-origin: top left;
+  transform: scale(var(--scale-factor)); /* Dynamic scaling */
+  overflow: hidden;
+}
+
+/* Scale factor based on the smaller viewport dimension */
+:root {
+  --scale-factor: calc(min(100vw / 1440, 100vh / 900));
+}
+
+/* Frame alignment */
+.home-page .frame {
+  position: absolute;
+  width: 256px;
+  height: 81px;
+  top: 601px;
+  left: 597px;
+}
+
+/* Text wrapper */
+.home-page .text-wrapper {
+  position: absolute;
+  width: 925px;
+  top: -247px;
+  left: -317px;
+  opacity: 0.5;
+  font-family: "Jua-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 36px;
+  text-align: center;
+  letter-spacing: 0.72px;
+  line-height: normal;
+}
+
+/* Button */
+.home-page .button {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  width: 362px;
+  height: 71px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 27px;
+  position: absolute;
+  top: 34px;
+  left: -53px;
+  background-color: #ff63478f;
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-size: 25px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Smaller text inside button */
+.home-page .text-wrapper-2 {
+  position: relative;
+  width: 190px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #f3f3f3;
+  font-size: 25px;
+  text-align: center;
+}
+
+/* Sun element centered */
+.home-page .sun {
+  position: absolute;
+  width: 238px;
+  height: 250px;
+  top: 44px;
+  left: 619px;
+  object-fit: cover;
+}
+
+/* Additional small frame */
+.home-page .frame-2 {
+  position: absolute;
+  width: 11px;
+  height: 4px;
+  top: 849px;
+  left: 754px;
+}
+
+/* Description paragraph */
+.home-page .p {
+  position: absolute;
+  width: 925px;
+  top: -911px;
+  left: 473px;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #333;
+  font-size: 18px;
+  letter-spacing: 0.36px;
+  line-height: normal;
+}
+
+/* Div wrapper for centered content */
+.home-page .div-wrapper {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  width: 362px;
+  height: 71px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 27px;
+  position: absolute;
+  top: 762px;
+  left: 544px;
+  background-color: #ff63478f;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 25px;
+  text-align: center;
+}
+
+.home-page .text-wrapper-3 {
+  position: relative;
+  width: 190px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #f3f3f3;
+  font-size: 25px;
+  text-align: center;
+  letter-spacing: 1.25px;
+  line-height: normal;
+}
+
+.button:hover {
+  opacity: 0.7; /* Set opacity to 70% on hover */
+  background-color: #ff6347; /* Change background on hover */
+ }

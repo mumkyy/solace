@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Emotion-Based Tips</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, rgb(255, 191, 0) 0%, rgb(255, 140, 0) 100%);
+      display: flex;
+      font-family: Arial, sans-serif;
+    }
+
+    .side-bar {
+      width: 300px;
+      height: 400px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, rgb(255, 191, 0) 0%, rgb(255, 140, 0) 100%);
+      display: flex;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      position: relative;
+      padding: 20px;
+    }
+
+    .sun {
+      width: 80px;
+      height: 80px;
+      background-image: url('../static/images/solacelogo.png'); /* Update path if needed */
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 15px;
+    }
+
+    #tips-section {
+      font-size: 1.1em;
+      color: #333;
+      font-style: italic;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .quit-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+    
+    .quit-button:hover {
+      opacity: 0.7; /* Set opacity to 70% on hover */
+      background-color: #ff6347; /* Change background on hover */
+    }
+
+    video {
+      display: none; /* Hide video element */
+    }
+  </style>
+</head>
+<body>
+  <div class="side-bar">
+    <div class="sun"></div>
+    <div id="tips-section">so glad you're here :D</div>
+  </div>
+
+  <video id="camera-stream" autoplay playsinline></video>
+
+  <script>
+    async function startVideoStream() {
+      const video = document.getElementById('camera-stream');
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      video.srcObject = stream;
+
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+
+      setInterval(() => {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        canvas.toBlob((blob) => {
+          const formData = new FormData();
+          formData.append('frame', blob, 'frame.jpg');
+          fetch('/analyze_emotion', {
+            method: 'POST',
+            body: formData
+          })
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('tips-section').innerText = `${data.tip}`;
+          })
+          .catch(error => {
+            document.getElementById('tips-section').innerText = "having some trouble, but your doing great :)";
+            console.error("Error:", error);
+          });
+        }, 'image/jpeg');
+      }, 5000); // Send a frame every 5 seconds
+    }
+
+    startVideoStream();
+  </script>
+  <button class="quit-button" onclick="window.close()">quit</button>
+</body>
+</html>
