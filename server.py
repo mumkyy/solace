@@ -122,7 +122,7 @@ def analyze_emotion():
     
     # Check if 10 seconds have passed since the last request (for testing purposes)
     current_time = time.time()
-    if current_time - last_request_time >= 10:  # Change this back to 300 for production
+    if current_time - last_request_time >= 300:  # Change this back to 300 for production
         # Calculate the most frequent emotion in the history
         if emotion_history:
             most_common_emotion = Counter(emotion_history).most_common(1)[0][0]
